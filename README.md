@@ -32,27 +32,36 @@ A Lovelace card for the [What's On Series & Films](https://github.com/janfajesse
 
 <picture>
   <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_+add_card_select.png">
-  <img src="Screenshots/Screenshot_+add_card_select.png" style="width: 30%;">
+  <img src="Screenshots/Screenshot_+add_card_select.png" style="width: 20%;">
 </picture>
 <picture>
-  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_+add_card_select.png">
-  <img src="Screenshots/Screenshot_+add_card_select.png" style="width: 30%;">
+  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_configuration_light_card.png">
+  <img src="Screenshots/Screenshot_configuration_light_card.png" style="width: 20%;">
 </picture>
 <picture>
-  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_+add_card_select.png">
-  <img src="Screenshots/Screenshot_+add_card_select.png" style="width: 30%;">
+  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_cinemas_following_series.png">
+  <img src="Screenshots/Screenshot_cinemas_following_series.png" style="width: 20%;">
 </picture>
 <picture>
-  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_+add_card_select.png">
-  <img src="Screenshots/Screenshot_+add_card_select.png" style="width: 30%;">
+  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_cines_en_españa_prime_video.png">
+  <img src="Screenshots/Screenshot_cines_en_españa_prime_video.png" style="width: 20%;">
 </picture>
 <picture>
-  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_+add_card_select.png">
-  <img src="Screenshots/Screenshot_+add_card_select.png" style="width: 30%;">
+  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_light_card_prime_netflix_appletv.png">
+  <img src="Screenshots/Screenshot_light_card_prime_netflix_appletv.png" style="width: 20%;">
 </picture>
-
-  <img src="Screenshots/Screenshot_configuration_light_card.png" width="70"/> <img src="Screenshots/Screenshot_cinemas_following_series.png" width="70"/> <img src="Screenshots/Screenshot_cines_en_españa_prime_video.png" width="70"/> <br> 
-<img src="Screenshots/Screenshot_light_card_prime_netflix_appletv.png" width="70"/> <img src="Screenshots/Screenshot_La_momia_sinopsis.png" width="70"/> <img src="Screenshots/Screenshot_light_mode_movie_information.png" width="70"/> <img src="Screenshots/Screenshot_modal_window_synopsi.png" width="70"/>
+<picture>
+  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_La_momia_sinopsis.png">
+  <img src="Screenshots/Screenshot_La_momia_sinopsis.png" style="width: 20%;">
+</picture>
+<picture>
+  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_light_mode_movie_information.png">
+  <img src="Screenshots/Screenshot_light_mode_movie_information.png" style="width: 20%;">
+</picture>
+<picture>
+  <source media="(min-width: 768px)" srcset="Screenshots/Screenshot_modal_window_synopsi.png">
+  <img src="Screenshots/Screenshot_modal_window_synopsi.png" style="width: 20%;">
+</picture>
 
 </div>
 
