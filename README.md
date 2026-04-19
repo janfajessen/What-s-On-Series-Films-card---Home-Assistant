@@ -29,7 +29,13 @@ Qué hacen en streaming y en el cine - ما الذي يعرض في البث ال
 
 A Lovelace card for the [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide---Home-Assistant) Home Assistant integration. Shows movies in theaters, new releases on streaming platforms, and tracks your followed TV series via TVmaze — all in one beautiful scrollable card.
 
-![Card Preview](preview.png)
+<div align="center">
+  
+<img src="Screenshots/Screenshot_+add_card_select.png" width="100"/> <img src="Screenshots/Screenshot_cinemas_following_series.png" width="100"/> <img src="Screenshots/Screenshot_cines_en_españa_prime_video.png" width="100"/> <br> 
+<img src="Screenshots/Screenshot_light_card_prime_netflix_appletv.png" width="100"/> <img src="Screenshots/Screenshot_La_momia_sinopsis.png" width="100"/> <img src="Screenshots/Screenshot_modal_window_synopsi.png" width="100"/>
+
+</div>
+
 
 ---
 
