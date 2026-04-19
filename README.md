@@ -27,7 +27,7 @@ Qué hacen en streaming y en el cine - ما الذي يعرض في البث ال
 
 ---
 
-A Lovelace card for the [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide) Home Assistant integration. Shows movies in theaters, new releases on streaming platforms, and tracks your followed TV series via TVmaze — all in one beautiful scrollable card.
+A Lovelace card for the [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide---Home-Assistant) Home Assistant integration. Shows movies in theaters, new releases on streaming platforms, and tracks your followed TV series via TVmaze — all in one beautiful scrollable card.
 
 ![Card Preview](preview.png)
 
@@ -368,7 +368,7 @@ Availability varies by country. The most common platforms supported:
 ## 📋 Requirements
 
 - Home Assistant 2024.1+
-- [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide) installed
+- [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide---Home-Assistant) installed
 - TMDB API key (free at [themoviedb.org](https://www.themoviedb.org/settings/api))
 - TVmaze API key (optional, for series tracking)
 
