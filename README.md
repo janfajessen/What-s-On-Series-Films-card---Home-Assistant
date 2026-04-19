@@ -1,7 +1,7 @@
 <div align="center">
 
 # What's On Series & Films Card
-## Stream and Cinema Guide <br> Home Assistant Integration
+## Stream and Cinema Guide <br> Home Assistant Lovelace Card
 
 ..........   <img src="brands/logo@2x.png" width="550"/>
 
@@ -24,7 +24,10 @@ Qué hacen en streaming y en el cine - ما الذي يعرض في البث ال
 </sub>
 
 </div>
-A Lovelace card for the [What's On TV](https://github.com/janfajessen/whatsontv) Home Assistant integration. Shows movies in theaters, new releases on streaming platforms, and tracks your followed TV series via TVmaze — all in one beautiful scrollable card.
+
+---
+
+A Lovelace card for the [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide) Home Assistant integration. Shows movies in theaters, new releases on streaming platforms, and tracks your followed TV series via TVmaze — all in one beautiful scrollable card.
 
 ![Card Preview](preview.png)
 
@@ -168,55 +171,178 @@ template:
 
 ## 🗺️ Available countries
 
-The What's On TV integration supports the following countries for cinema and streaming platforms. Use the 2-letter country code in your integration configuration.
 
 ### 🎬 Cinema (TMDB Now Playing / Upcoming)
 
-| Flag | Country | Code |
-|------|---------|------|
-| 🇦🇩 | Andorra | `AD` |
-| 🇦🇷 | Argentina | `AR` |
-| 🇦🇺 | Australia | `AU` |
-| 🇦🇹 | Austria | `AT` |
-| 🇧🇪 | Belgium | `BE` |
-| 🇧🇷 | Brazil | `BR` |
-| 🇨🇦 | Canada | `CA` |
-| 🇨🇱 | Chile | `CL` |
-| 🇨🇴 | Colombia | `CO` |
-| 🇨🇿 | Czech Republic | `CZ` |
-| 🇩🇰 | Denmark | `DK` |
-| 🇫🇮 | Finland | `FI` |
-| 🇫🇷 | France | `FR` |
-| 🇩🇪 | Germany | `DE` |
-| 🇬🇷 | Greece | `GR` |
-| 🇭🇰 | Hong Kong | `HK` |
-| 🇭🇺 | Hungary | `HU` |
-| 🇮🇳 | India | `IN` |
-| 🇮🇩 | Indonesia | `ID` |
-| 🇮🇪 | Ireland | `IE` |
-| 🇮🇱 | Israel | `IL` |
-| 🇮🇹 | Italy | `IT` |
-| 🇯🇵 | Japan | `JP` |
-| 🇲🇽 | Mexico | `MX` |
-| 🇳🇱 | Netherlands | `NL` |
-| 🇳🇿 | New Zealand | `NZ` |
-| 🇳🇴 | Norway | `NO` |
-| 🇵🇱 | Poland | `PL` |
-| 🇵🇹 | Portugal | `PT` |
-| 🇷🇴 | Romania | `RO` |
-| 🇷🇺 | Russia | `RU` |
-| 🇸🇦 | Saudi Arabia | `SA` |
-| 🇸🇬 | Singapore | `SG` |
-| 🇰🇷 | South Korea | `KR` |
-| 🇪🇸 | Spain | `ES` |
-| 🇸🇪 | Sweden | `SE` |
-| 🇨🇭 | Switzerland | `CH` |
-| 🇹🇼 | Taiwan | `TW` |
-| 🇹🇭 | Thailand | `TH` |
-| 🇹🇷 | Turkey | `TR` |
-| 🇬🇧 | United Kingdom | `GB` |
-| 🇺🇸 | United States | `US` |
-| 🇻🇪 | Venezuela | `VE` |
+
+
+<table border="0" cellspacing="0" cellpadding="6" width="100%">
+<tr>
+<td width="20%" align="left"><sub>🇪🇸 España / Espanya / Espainia</sub></td>
+<td width="20%" align="left"><sub>🇦🇩 Andorra</sub></td>
+<td width="20%" align="left"><sub>🇦🇱 Shqipëria *</sub></td>
+<td width="20%" align="left"><sub>🇦🇷 Argentina</sub></td>
+<td width="20%" align="left"><sub>🇦🇲 Հայաստան *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇦🇺 Australia</sub></td>
+<td width="20%" align="left"><sub>🇦🇹 Österreich</sub></td>
+<td width="20%" align="left"><sub>🇦🇼 Aruba *</sub></td>
+<td width="20%" align="left"><sub>🇸🇦 المملكة العربية السعودية</sub></td>
+<td width="20%" align="left"><sub>🇧🇾 Беларусь *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇧🇪 België / Belgique / Belgien</sub></td>
+<td width="20%" align="left"><sub>🇧🇴 Bolivia *</sub></td>
+<td width="20%" align="left"><sub>🇧🇦 Bosna i Hercegovina / Босна и Херцеговина *</sub></td>
+<td width="20%" align="left"><sub>🇧🇷 Brasil</sub></td>
+<td width="20%" align="left"><sub>🇧🇬 България *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇨🇦 Canada</sub></td>
+<td width="20%" align="left"><sub>🏝️ Caribbean *</sub></td>
+<td width="20%" align="left"><sub>🇨🇱 Chile</sub></td>
+<td width="20%" align="left"><sub>🇨🇳 中国 *</sub></td>
+<td width="20%" align="left"><sub>🇨🇴 Colombia</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇨🇷 Costa Rica *</sub></td>
+<td width="20%" align="left"><sub>🇨🇮 Côte d'Ivoire *</sub></td>
+<td width="20%" align="left"><sub>🇭🇷 Hrvatska *</sub></td>
+<td width="20%" align="left"><sub>🇨🇿 Česká republika</sub></td>
+<td width="20%" align="left"><sub>🇨🇾 Κύπρος / Kıbrıs *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇩🇰 Danmark</sub></td>
+<td width="20%" align="left"><sub>🇩🇴 Rep. Dominicana *</sub></td>
+<td width="20%" align="left"><sub>🇪🇨 Ecuador *</sub></td>
+<td width="20%" align="left"><sub>🇪🇬 مصر *</sub></td>
+<td width="20%" align="left"><sub>🇸🇻 El Salvador *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇪🇪 Eesti *</sub></td>
+<td width="20%" align="left"><sub>🇫🇴 Færøerne / Føroyar *</sub></td>
+<td width="20%" align="left"><sub>🇫🇮 Suomi / Finland</sub></td>
+<td width="20%" align="left"><sub>🇫🇷 France</sub></td>
+<td width="20%" align="left"><sub>🇬🇪 საქართველო *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇩🇪 Deutschland</sub></td>
+<td width="20%" align="left"><sub>🇬🇭 Ghana *</sub></td>
+<td width="20%" align="left"><sub>🇬🇷 Ελλάδα</sub></td>
+<td width="20%" align="left"><sub>🇬🇹 Guatemala *</sub></td>
+<td width="20%" align="left"><sub>🇭🇳 Honduras *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇭🇰 Hong Kong / 香港</sub></td>
+<td width="20%" align="left"><sub>🇭🇺 Magyarország</sub></td>
+<td width="20%" align="left"><sub>🇮🇪 Ireland / Éire</sub></td>
+<td width="20%" align="left"><sub>🇮🇸 Ísland *</sub></td>
+<td width="20%" align="left"><sub>🇮🇳 Bharat भारत</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇮🇩 Indonesia</sub></td>
+<td width="20%" align="left"><sub>🇮🇱 יִשְׂרָאֵל</sub></td>
+<td width="20%" align="left"><sub>🇮🇹 Italia</sub></td>
+<td width="20%" align="left"><sub>🇯🇲 Jamaica *</sub></td>
+<td width="20%" align="left"><sub>🇯🇵 日本</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇰🇿 Қазақстан *</sub></td>
+<td width="20%" align="left"><sub>🇰🇪 Kenya *</sub></td>
+<td width="20%" align="left"><sub>🇱🇻 Latvija *</sub></td>
+<td width="20%" align="left"><sub>🇱🇧 لبنان *</sub></td>
+<td width="20%" align="left"><sub>🇱🇮 Liechtenstein *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇱🇾 Libya / ليبيا *</sub></td>
+<td width="20%" align="left"><sub>🇱🇹 Lietuva *</sub></td>
+<td width="20%" align="left"><sub>🇱🇺 Lëtzebuerg / Luxembourg / Luxemburg *</sub></td>
+<td width="20%" align="left"><sub>🇲🇴 Macao / 澳門 *</sub></td>
+<td width="20%" align="left"><sub>🇲🇬 Madagasikara *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇲🇼 Malawi *</sub></td>
+<td width="20%" align="left"><sub>🇲🇾 Bahasa Melayu *</sub></td>
+<td width="20%" align="left"><sub>🇲🇹 Malta *</sub></td>
+<td width="20%" align="left"><sub>🇲🇺 Mauritius *</sub></td>
+<td width="20%" align="left"><sub>🇲🇽 México</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇲🇰 Северна Македонија *</sub></td>
+<td width="20%" align="left"><sub>🇲🇳 Монгол *</sub></td>
+<td width="20%" align="left"><sub>🇲🇪 Crna Gora / Črna Гора *</sub></td>
+<td width="20%" align="left"><sub>🇲🇦 المغرب *</sub></td>
+<td width="20%" align="left"><sub>🇲🇨 Monaco / Mónegue *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇲🇿 Moçambique *</sub></td>
+<td width="20%" align="left"><sub>🇳🇦 Namibia *</sub></td>
+<td width="20%" align="left"><sub>🇳🇱 Nederland</sub></td>
+<td width="20%" align="left"><sub>🇳🇨 Nouvelle-Calédonie *</sub></td>
+<td width="20%" align="left"><sub>🇳🇿 New Zealand / Aotearoa</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇳🇮 Nicaragua *</sub></td>
+<td width="20%" align="left"><sub>🇳🇬 Nigeria *</sub></td>
+<td width="20%" align="left"><sub>🇳🇴 Norge / Noreg</sub></td>
+<td width="20%" align="left"><sub>🇵🇰 Pakistan *</sub></td>
+<td width="20%" align="left"><sub>🇵🇦 Panamá *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇵🇾 Paraguay *</sub></td>
+<td width="20%" align="left"><sub>🇵🇪 Perú *</sub></td>
+<td width="20%" align="left"><sub>🇵🇭 Pilipinas *</sub></td>
+<td width="20%" align="left"><sub>🇵🇱 Polska</sub></td>
+<td width="20%" align="left"><sub>🇵🇸 فلسطين *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇵🇹 Portugal</sub></td>
+<td width="20%" align="left"><sub>🇵🇷 Puerto Rico *</sub></td>
+<td width="20%" align="left"><sub>🇶🇦 قطر *</sub></td>
+<td width="20%" align="left"><sub>🇷🇴 România</sub></td>
+<td width="20%" align="left"><sub>🇷🇺 Россия</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇷🇸 Gora / Црна Гора *</sub></td>
+<td width="20%" align="left"><sub>🇸🇲 San Marino *</sub></td>
+<td width="20%" align="left"><sub>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland *</sub></td>
+<td width="20%" align="left"><sub>🇸🇬 Singapore / 新加坡 / சிங்கப்பூர் / Singapura</sub></td>
+<td width="20%" align="left"><sub>🇸🇰 Slovensko *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇸🇮 Slovenija *</sub></td>
+<td width="20%" align="left"><sub>🇿🇦 South Africa *</sub></td>
+<td width="20%" align="left"><sub>🇰🇷 대한민국</sub></td>
+<td width="20%" align="left"><sub>🇸🇪 Sverige</sub></td>
+<td width="20%" align="left"><sub>🇨🇭 Schweiz / Suisse / Svizzera / Svizra</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇹🇼 Taiwan / 臺灣</sub></td>
+<td width="20%" align="left"><sub>🇹🇭 ประเทศไทย</sub></td>
+<td width="20%" align="left"><sub>🇹🇷 Türkiye</sub></td>
+<td width="20%" align="left"><sub>🇺🇬 Uganda *</sub></td>
+<td width="20%" align="left"><sub>🇺🇦 Украïна *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇦🇪 Al-Imarat *</sub></td>
+<td width="20%" align="left"><sub>🇬🇧 United Kingdom / Cymru / Alba</sub></td>
+<td width="20%" align="left"><sub>🇺🇸 United States</sub></td>
+<td width="20%" align="left"><sub>🇺🇾 Uruguay *</sub></td>
+<td width="20%" align="left"><sub>🇺🇿 Oʻzbekiston *</sub></td>
+</tr>
+<tr>
+<td width="20%" align="left"><sub>🇻🇦 Città del Vaticano *</sub></td>
+<td width="20%" align="left"><sub>🇻🇪 Venezuela</sub></td>
+<td width="20%" align="left"><sub>🇻🇳 Việt Nam *</sub></td>
+<td width="20%" align="left"><sub>🇿🇲 Zambia *</sub></td>
+<td width="20%" align="left"><sub>🇿🇼 Zimbabwe *</sub></td>
+</tr>
+</table>...
+* 🌍 Only worldwide platforms
+
+
+
 
 ### 📡 Streaming platforms availability
 
@@ -242,7 +368,7 @@ Availability varies by country. The most common platforms supported:
 ## 📋 Requirements
 
 - Home Assistant 2024.1+
-- [What's On TV integration](https://github.com/janfajessen/whatsontv) installed
+- [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide) installed
 - TMDB API key (free at [themoviedb.org](https://www.themoviedb.org/settings/api))
 - TVmaze API key (optional, for series tracking)
 
