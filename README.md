@@ -264,12 +264,21 @@ Availability varies by country. The most common platforms supported:
 
 ---
 
+<div align="center">
+<img src="Screenshots/home_assistant_icon.png" width="150"/>
+</div>
+
 ## 📋 Requirements
 
 - Home Assistant 2024.1+
 - [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide---Home-Assistant) integration installed
 - TMDB API key (free at [themoviedb.org](https://www.themoviedb.org/settings/api))
 - TVmaze account (free, optional — for series tracking)
+
+<div align="center">
+<img src="brands/logo@2x.png" width="150">
+</div>
+
 
 ---
 
