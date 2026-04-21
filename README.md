@@ -276,7 +276,7 @@ Availability varies by country. The most common platforms supported:
 ## 🤝 Related cards
 
 - [What's On TV EPG Card](https://github.com/janfajessen/What-s-On-TV-EPG-TV-Guide-Card) — Full TV guide / EPG
-- [What's On TV Notify Card](https://github.com/janfajessen/What-s-On-TV-Search-and-Notify-Card) — Search & notifications
+- [What's On TV Search & Notify Card](https://github.com/janfajessen/What-s-On-TV-Search-and-Notify-Card) — Search & notifications
 
 ---
 
