@@ -525,4 +525,6 @@ Or consider supporting development!
 ## 📄 License
 --->
 
-MIT License — © janfajessen
+MIT License —
+
+© [@janfajessen](https://github.com/janfajessen)
