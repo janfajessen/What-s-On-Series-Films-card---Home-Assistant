@@ -70,6 +70,228 @@ A Lovelace card for the [What's On Series & Films](https://github.com/janfajesse
 ## ✨ Features
 
 - 🎬 **Cinema** — Now playing & upcoming releases in your country
+- 📡 **Streaming platforms** — New movies, series/docs and top 50 grouped by platform (Netflix, Amazon, Disney+, etc.)
+- 📺 **TVmaze Following** — Track your series with poster, channel, rating, last/next episode
+- 🔥 **Global Trending** — Weekly top movies and series worldwide (dedicated tab)
+- 🌍 **49 languages** — Auto-detects your HA language, including genre names
+- 🎨 **Fully customizable** — Dark/light theme, 8 accent color presets + custom HEX/RGB
+- ⚙️ **Visual editor** — Drag to reorder platforms, ✕ to hide, ↺ to restore
+- 🖱️ **Smooth horizontal scroll** — Mouse wheel, click-and-drag, and touch support
+- 💡 **Auto-discovery** — Finds all `sensor.whatson_*` sensors automatically
+
+---
+
+## 📦 Installation
+
+### Via HACS (recommended)
+
+1. Open HACS → Frontend → **+ Explore & Download Repositories**
+2. Search for **What's On TV Series & Films Card**
+3. Download and restart HA
+
+### Manual
+
+1. Copy `whatson-series-films-card.js` to `/config/www/`
+2. Go to **Settings → Dashboards → Resources**
+3. Add `/local/whatson-series-films-card.js?v=1` as **JavaScript Module**
+
+> **Tip:** When updating the card, increment the `?v=` number (e.g. `?v=2`) to force the browser to reload the new version and clear cache.
+
+---
+
+## 🚀 Usage
+
+### Minimal (auto-discover everything)
+
+```yaml
+type: custom:whatson-series-films-card
+```
+
+### With options
+
+```yaml
+type: custom:whatson-series-films-card
+title: "What's On"
+theme: dark        # dark | light
+accent: "#e8872a"  # any hex color
+```
+
+### Specific sensors only
+
+```yaml
+type: custom:whatson-series-films-card
+entities:
+  - sensor.whatson_series_films_es_cinema_now_playing
+  - sensor.whatson_series_films_es_new_movies_on_netflix_standard_with_ads
+  - sensor.whatson_series_films_lupin_status
+```
+
+---
+
+## ⚙️ Configuration options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `title` | string | *(auto from HA language)* | Card title |
+| `theme` | `dark`\|`light` | `dark` | Color theme |
+| `accent` | string | `#e8872a` | Accent color (HEX or `R,G,B`) |
+| `entities` | list | *(auto-discover)* | Specific sensors to display |
+| `platform_order` | list | `[]` | Platform display order (set via visual editor drag) |
+| `hidden_entities` | list | `[]` | Hidden platforms/sensors (set via visual editor ✕) |
+
+---
+
+## 🔧 Automations & Scripts
+
+### Notify when a new movie appears in theaters
+
+```yaml
+alias: "What's On — New cinema release"
+trigger:
+  - platform: template
+    value_template: >
+      {{ state_attr('sensor.whatson_series_films_es_cinema_now_playing', 'movies')
+         | selectattr('release_date', 'ge', now().strftime('%Y-%m-%d'))
+         | list | count > 0 }}
+action:
+  - action: notify.telegram_jan
+    data:
+      message: >
+        🎬 New in theaters today:
+        {% for m in state_attr('sensor.whatson_series_films_es_cinema_now_playing', 'movies')
+           if m.release_date == now().strftime('%Y-%m-%d') %}
+        • {{ m.title }} {% if m.vote_average > 0 %}(⭐{{ m.vote_average }}){% endif %}
+        {% endfor %}
+```
+
+### Notify when a followed series has a new episode
+
+```yaml
+alias: "What's On — New episode available"
+trigger:
+  - platform: state
+    entity_id: sensor.whatson_series_films_lupin_next_episode
+    from: "No upcoming episode"
+action:
+  - action: notify.telegram_jan
+    data:
+      message: >
+        📺 New episode of **Lupin**!
+        {{ states('sensor.whatson_series_films_lupin_next_episode') }}
+```
+
+### Send weekly streaming highlights to Telegram
+
+```yaml
+alias: "What's On — Weekly highlights"
+trigger:
+  - platform: time
+    at: "09:00:00"
+  - platform: template
+    value_template: "{{ now().weekday() == 4 }}"  # Friday
+action:
+  - variables:
+      movies: "{{ state_attr('sensor.whatson_series_films_es_new_movies_on_netflix_standard_with_ads', 'movies') }}"
+  - action: notify.telegram_jan
+    data:
+      message: >
+        🎬 *New on Netflix this week:*
+        {% for m in movies[:5] %}
+        • {{ m.title }}{% if m.vote_average > 0 %} ⭐{{ m.vote_average }}{% endif %}
+        {% endfor %}
+```
+
+### Display now-playing count as a sensor badge
+
+```yaml
+template:
+  - sensor:
+      - name: "Cinema now playing count"
+        state: >
+          {{ state_attr('sensor.whatson_series_films_es_cinema_now_playing', 'movies') | count }}
+        icon: mdi:ticket-confirmation-outline
+```
+
+---
+
+## 🗺️ Available countries
+
+### 🎬 Cinema (TMDB Now Playing / Upcoming)
+
+|  |  |  |  |  |
+|--|--|--|--|--|
+| 🇪🇸 España / Espanya / Espainia | 🇦🇩 Andorra | 🇦🇱 Shqipëria \* | 🇦🇷 Argentina | 🇦🇲 Հայաստան \* |
+| 🇦🇺 Australia | 🇦🇹 Österreich | 🇦🇼 Aruba \* | 🇸🇦 المملكة العربية السعودية | 🇧🇾 Беларусь \* |
+| 🇧🇪 België / Belgique / Belgien | 🇧🇴 Bolivia \* | 🇧🇦 Bosna i Hercegovina / Босна и Херцеговина \* | 🇧🇷 Brasil | 🇧🇬 България \* |
+| 🇨🇦 Canada | 🏝️ Caribbean \* | 🇨🇱 Chile | 🇨🇳 中国 \* | 🇨🇴 Colombia |
+| 🇨🇷 Costa Rica \* | 🇨🇮 Côte d'Ivoire \* | 🇭🇷 Hrvatska \* | 🇨🇿 Česká republika | 🇨🇾 Κύπρος / Kıbrıs \* |
+| 🇩🇰 Danmark | 🇩🇴 Rep. Dominicana \* | 🇪🇨 Ecuador \* | 🇪🇬 مصر \* | 🇸🇻 El Salvador \* |
+| 🇪🇪 Eesti \* | 🇫🇴 Færøerne / Føroyar \* | 🇫🇮 Suomi / Finland | 🇫🇷 France | 🇬🇪 საქართველო \* |
+| 🇩🇪 Deutschland | 🇬🇭 Ghana \* | 🇬🇷 Ελλάδα | 🇬🇹 Guatemala \* | 🇭🇳 Honduras \* |
+| 🇭🇰 Hong Kong / 香港 | 🇭🇺 Magyarország | 🇮🇪 Ireland / Éire | 🇮🇸 Ísland \* | 🇮🇳 Bharat भारत |
+| 🇮🇩 Indonesia | 🇮🇱 יִשְׂרָאֵל | 🇮🇹 Italia | 🇯🇲 Jamaica \* | 🇯🇵 日本 |
+| 🇰🇿 Қазақстан \* | 🇰🇪 Kenya \* | 🇱🇻 Latvija \* | 🇱🇧 لبنان \* | 🇱🇮 Liechtenstein \* |
+| 🇱🇾 Libya / ليبيا \* | 🇱🇹 Lietuva \* | 🇱🇺 Lëtzebuerg / Luxembourg / Luxemburg \* | 🇲🇴 Macao / 澳門 \* | 🇲🇬 Madagasikara \* |
+| 🇲🇼 Malawi \* | 🇲🇾 Bahasa Melayu \* | 🇲🇹 Malta \* | 🇲🇺 Mauritius \* | 🇲🇽 México |
+| 🇲🇰 Северна Македонија \* | 🇲🇳 Монгол \* | 🇲🇪 Crna Gora / Crna Гора \* | 🇲🇦 المغرب \* | 🇲🇨 Monaco / Mónegue \* |
+| 🇲🇿 Moçambique \* | 🇳🇦 Namibia \* | 🇳🇱 Nederland | 🇳🇨 Nouvelle-Calédonie \* | 🇳🇿 New Zealand / Aotearoa |
+| 🇳🇮 Nicaragua \* | 🇳🇬 Nigeria \* | 🇳🇴 Norge / Noreg | 🇵🇰 Pakistan \* | 🇵🇦 Panamá \* |
+| 🇵🇾 Paraguay \* | 🇵🇪 Perú \* | 🇵🇭 Pilipinas \* | 🇵🇱 Polska | 🇵🇸 فلسطين \* |
+| 🇵🇹 Portugal | 🇵🇷 Puerto Rico \* | 🇶🇦 قطر \* | 🇷🇴 România | 🇷🇺 Россия |
+| 🇷🇸 Srbija / Србија \* | 🇸🇲 San Marino \* | 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland \* | 🇸🇬 Singapore / 新加坡 / சிங்கப்பூர் / Singapura | 🇸🇰 Slovensko \* |
+| 🇸🇮 Slovenija \* | 🇿🇦 South Africa \* | 🇰🇷 대한민국 | 🇸🇪 Sverige | 🇨🇭 Schweiz / Suisse / Svizzera / Svizra |
+| 🇹🇼 Taiwan / 臺灣 | 🇹🇭 ประเทศไทย | 🇹🇷 Türkiye | 🇺🇬 Uganda \* | 🇺🇦 Украïна \* |
+| 🇦🇪 Al-Imarat \* | 🇬🇧 United Kingdom / Cymru / Alba | 🇺🇸 United States | 🇺🇾 Uruguay \* | 🇺🇿 Oʻzbekiston \* |
+| 🇻🇦 Città del Vaticano \* | 🇻🇪 Venezuela | 🇻🇳 Việt Nam \* | 🇿🇲 Zambia \* | 🇿🇼 Zimbabwe \* |
+
+\* Cinema data may be limited or unavailable for this country — worldwide streaming platforms remain fully available regardless.
+
+### 📡 Streaming platforms availability
+
+Availability varies by country. The most common platforms supported:
+
+| Platform | Main countries |
+|----------|---------------|
+| Netflix | 🌍 Worldwide (190+ countries) |
+| Amazon Prime Video | 🌍 Worldwide (200+ countries) |
+| Disney+ | 🇺🇸🇬🇧🇪🇸🇫🇷🇩🇪🇮🇹🇦🇺🇨🇦🇯🇵 + more |
+| HBO Max / Max | 🇺🇸🇬🇧🇪🇸🇵🇹🇳🇱🇸🇪🇩🇰🇳🇴🇫🇮 + more |
+| Apple TV+ | 🌍 Worldwide |
+| Hulu | 🇺🇸 |
+| Peacock | 🇺🇸 |
+| Paramount+ | 🇺🇸🇬🇧🇪🇸🇫🇷🇩🇪🇮🇹🇦🇺🇨🇦 + more |
+| Movistar+ | 🇪🇸 |
+| 3Cat | 🇪🇸 <sub>(Catalunya)</sub> |
+| RTVE Play | 🇪🇸 |
+| Atresplayer | 🇪🇸 |
+
+---
+
+## 📋 Requirements
+
+- Home Assistant 2024.1+
+- [What's On Series & Films](https://github.com/janfajessen/What-s-On-Series-Films---Stream-Cinema-Guide---Home-Assistant) integration installed
+- TMDB API key (free at [themoviedb.org](https://www.themoviedb.org/settings/api))
+- TVmaze account (free, optional — for series tracking)
+
+---
+
+## 🤝 Related cards
+
+- [What's On TV EPG Card](https://github.com/janfajessen/What-s-On-TV-EPG-TV-Guide-Card) — Full TV guide / EPG
+- [What's On TV Notify Card](https://github.com/janfajessen/What-s-On-TV-Search-and-Notify-Card) — Search & notifications
+
+---
+
+## 📄 License
+
+MIT License — © janfajessen
+
+<!---
+
+## ✨ Features
+
+- 🎬 **Cinema** — Now playing & upcoming releases in your country
 - 📡 **Streaming platforms** — New movies and series/docs grouped by platform (Netflix, Amazon, Disney+, etc.)
 - 📺 **TVmaze Following** — Track your series with poster, channel, rating, last/next episode
 - 🌍 **49 languages** — Auto-detects your HA language
@@ -301,5 +523,6 @@ Or consider supporting development!
 
 
 ## 📄 License
+--->
 
 MIT License — © janfajessen
