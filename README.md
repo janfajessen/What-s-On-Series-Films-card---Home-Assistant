@@ -3,7 +3,7 @@
 # What's On Series & Films Card
 ## Stream and Cinema Guide <br> Home Assistant Lovelace Card
 
-..........   <img src="brands/logo@2x.png" width="550"/>
+..........   <img src="https://github.com/janfajessen/What-s-On-Series-Films-card---Home-Assistant/blob/8da6c3c075a3467a662c3eba7e437913cdfbbdfb/brand/logo%402x.png" width="550"/>
 
 ![Version](https://img.shields.io/badge/version-1.9.19-blue?style=for-the-badge)
 ![HA](https://img.shields.io/badge/Home%20Assistant-2024.1+-orange?style=for-the-badge&logo=home-assistant)
@@ -88,6 +88,9 @@ A Lovelace card for the [What's On Series & Films](https://github.com/janfajesse
 1. Open HACS → Frontend → **+ Explore & Download Repositories**
 2. Search for **What's On TV Series & Films Card**
 3. Download and restart HA
+
+<img src="https://github.com/janfajessen/What-s-On-Series-Films-card---Home-Assistant/blob/8da6c3c075a3467a662c3eba7e437913cdfbbdfb/brand/icon%402x.png" width="100"/>
+
 
 ### Manual
 
