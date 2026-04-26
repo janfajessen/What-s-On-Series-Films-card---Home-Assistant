@@ -301,8 +301,13 @@ class WhatsonSeriesFilmsCardEditor extends HTMLElement {
       .drag-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px solid rgba(0,0,0,.1);border-radius:8px;background:var(--secondary-background-color,#f5f5f5);cursor:grab;user-select:none;font-size:12px;color:var(--primary-text-color,#000);transition:opacity .15s}
       .drag-item.hidden-item{opacity:.35}
       .drag-item:active{cursor:grabbing}
-      .drag-item.over{border-color:var(--a,#e8872a);background:var(--a,#e8872a)22}
-      .drag-handle{opacity:.4;font-size:16px;flex-shrink:0}
+      .drag-item.dragging{opacity:.25}
+      .drag-item.drag-over-top{box-shadow:inset 0 3px 0 var(--a,#e8872a)}
+      .drag-item.drag-over-bot{box-shadow:inset 0 -3px 0 var(--a,#e8872a)}
+      .drag-item.drag-over-top{box-shadow:inset 0 3px 0 var(--a,#e8872a)}
+      .drag-item.drag-over-bot{box-shadow:inset 0 -3px 0 var(--a,#e8872a)}
+      .drag-handle{font-size:18px;color:#aaa;cursor:grab;flex-shrink:0;padding:4px 6px;line-height:1;user-select:none;touch-action:none}
+      .drag-handle:active{color:var(--a,#e8872a);cursor:grabbing}
       .drag-lbl{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
       .drag-badge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px;background:var(--a,#e8872a)33;color:var(--a,#e8872a);letter-spacing:.05em;text-transform:uppercase;flex-shrink:0}
       .drag-badge.trend{background:#ff572233;color:#ff5722}
@@ -378,24 +383,52 @@ class WhatsonSeriesFilmsCardEditor extends HTMLElement {
  
   _initDrag(){
     const list=this.querySelector("#dlist"); if(!list) return;
-    let dragged=null;
-    list.addEventListener("dragstart",e=>{
-      dragged=e.target.closest(".drag-item");
-      if(dragged) dragged.style.opacity=".3";
-    });
-    list.addEventListener("dragend",()=>{
-      if(dragged) dragged.style.opacity="";
-      dragged=null;
-      const order=[...list.querySelectorAll(".drag-item")].map(li=>li.dataset.key);
-      this._config={...this._config,platform_order:order};
-      this._fire();
-    });
-    list.addEventListener("dragover",e=>{
-      e.preventDefault();
-      const target=e.target.closest(".drag-item");
-      if(!target||target===dragged) return;
-      const rect=target.getBoundingClientRect();
-      list.insertBefore(dragged,e.clientY>rect.top+rect.height/2?target.nextSibling:target);
+    const getItems=()=>[...list.querySelectorAll(".drag-item")];
+    if(getItems().length<2) return;
+    let dragIdx=null,overIdx=null,startY=0,moved=false;
+    const clearHL=()=>getItems().forEach(i=>i.classList.remove("drag-over-top","drag-over-bot","dragging"));
+    const hitTest=(clientY,src)=>{
+      for(const el of getItems()){
+        if(el===src) continue;
+        const r=el.getBoundingClientRect();
+        if(clientY>=r.top&&clientY<=r.bottom) return{el,top:clientY<r.top+r.height/2};
+      }
+      return null;
+    };
+    getItems().forEach((item,i)=>{
+      item.dataset.idx=i;
+      const handle=item.querySelector(".drag-handle"); if(!handle) return;
+      handle.addEventListener("pointerdown",e=>{
+        e.preventDefault();e.stopPropagation();
+        handle.setPointerCapture(e.pointerId);
+        dragIdx=i;overIdx=null;startY=e.clientY;moved=false;
+      });
+      handle.addEventListener("pointermove",e=>{
+        if(dragIdx===null) return;
+        e.preventDefault();e.stopPropagation();
+        if(Math.abs(e.clientY-startY)>4) moved=true;
+        if(!moved) return;
+        clearHL();item.classList.add("dragging");
+        const hit=hitTest(e.clientY,item);
+        if(hit){overIdx=parseInt(hit.el.dataset.idx);hit.el.classList.add(hit.top?"drag-over-top":"drag-over-bot");}
+        else overIdx=null;
+      });
+      handle.addEventListener("pointerup",e=>{
+        if(dragIdx===null) return;
+        e.preventDefault();e.stopPropagation();
+        clearHL();
+        if(moved&&overIdx!==null&&overIdx!==dragIdx){
+          const keys=getItems().map(li=>li.dataset.key);
+          const [mv]=keys.splice(dragIdx,1);
+          keys.splice(overIdx,0,mv);
+          this._config={...this._config,platform_order:keys};
+          this._fire();this._render();
+        }
+        dragIdx=null;overIdx=null;moved=false;
+      });
+      handle.addEventListener("pointercancel",()=>{
+        clearHL();dragIdx=null;overIdx=null;moved=false;
+      });
     });
   }
  
@@ -689,7 +722,7 @@ class WhatsonSeriesFilmsCard extends HTMLElement {
 :host{display:block}
 ha-card{background:${bg0};border-radius:16px;overflow:hidden;border:1px solid ${bord}}
 .chard{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 6px;font-family:'Segoe UI',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:${accent}}
-.cicon{height:30px;width:30px;object-fit:contain;opacity:.8}
+.cicon{height:30px;width:30px;object-fit:contain;opacity:1}
 .tabs{display:flex;border-bottom:1px solid ${bgGap};padding:0 12px}
 .tab{flex:1;padding:8px 4px;border:none;background:none;color:${txt3};font-family:'Segoe UI',system-ui,sans-serif;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;margin-bottom:-1px}
 .tab.active{color:${accent};border-bottom-color:${accent}}
